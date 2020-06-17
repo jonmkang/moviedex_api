@@ -28,19 +28,18 @@ app.use(function validateBearerToken(req, res, next) {
 
 app.get('/movie', (req, res) => {
     const { genre="", country="", avg_vote=""} = req.query;
-    const movieList = movies;
-    let results = [];
+    let results = movies;
 
     if(genre){
-        results = movieList.filter(movie => movie.genre.toLowerCase().includes(genre.toLowerCase()))
+        results = results.filter(movie => movie.genre.toLowerCase().includes(genre.toLowerCase()))
     }
 
     if(country){
-        results = movieList.filter(movie => movie.country.toLowerCase().includes(country.toLowerCase()))
+        results = results.filter(movie => movie.country.toLowerCase().includes(country.toLowerCase()))
     }
 
     if(avg_vote){
-        results = movieList.filter(movie => movie.avg_vote >= avg_vote)
+        results = results.filter(movie => movie.avg_vote >= avg_vote)
     }
 
 
